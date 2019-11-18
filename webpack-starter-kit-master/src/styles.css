@@ -1,0 +1,70 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.container {
+  margin-left: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.country__label {
+  width: 400px;
+  font-size: 24px;
+}
+
+.country__input {
+  width: 400px;
+  padding: 8px 8px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+.inform__container {
+  font-size: 24px;
+  width: 700px;
+  
+}
+
+.flex__box {
+  display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.country__name {
+  text-align: center;
+  font-size: 36px;
+}
+
+.inform__capital--span {
+  font-weight: bold;
+}
+
+.inform__population--span {
+  font-weight: bold;
+}
+
+/* .flag__container {
+  margin-left: 200px;
+} */
+
+.flag__img {
+  width: 400px ;
+  height: 400px;
+}
