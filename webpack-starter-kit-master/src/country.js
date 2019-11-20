@@ -14,12 +14,11 @@ refs.country__form.addEventListener('submit', onInput);
 
 function onInput(event) {
   event.preventDefault();
-  
-  const searchQuery = event.target.value;
-
-  countriesObj
-    .fetchCountries(searchQuery)
-    .then(data => {
+  const searchQuery = refs.country__input.value;
+  if (searchQuery === '') {
+    refs.country__list.innerHTML = '';
+  } else {
+    countriesObj.fetchCountries(searchQuery).then(data => {
       const allSearchedCountiesMassive = data;
 
       const allCountrieLanguageMassive = data.map(el => el.languages)[0];
@@ -42,11 +41,12 @@ function onInput(event) {
         const allSearchedCounties = buildListItem(allSearchedCountiesMassive);
         insertListItems(allSearchedCounties);
       }
-    })
-    .catch(error => {
-      console.log(error);
-      refs.country__list.innerHTML = '';
     });
+  }
+  // .catch(error => {
+  //   console.log(error);
+  //   refs.country__list.innerHTML = '';
+  // });
 }
 
 function insertListItems(items) {
