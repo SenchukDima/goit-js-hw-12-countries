@@ -9,8 +9,8 @@ const refs = {
   country__list: document.querySelector('#country__list'),
 };
 
-refs.country__input.addEventListener('input', _.debounce(onInput, 500));
 refs.country__form.addEventListener('submit', onInput);
+// refs.country__input.addEventListener('input', _.debounce(onInput, 500));
 
 function onInput(event) {
   event.preventDefault();
@@ -43,10 +43,6 @@ function onInput(event) {
       }
     });
   }
-  // .catch(error => {
-  //   console.log(error);
-  //   refs.country__list.innerHTML = '';
-  // });
 }
 
 function insertListItems(items) {
