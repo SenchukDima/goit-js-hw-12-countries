@@ -21,25 +21,32 @@ function onInput(event) {
     countriesObj.fetchCountries(searchQuery).then(data => {
       const allSearchedCountiesMassive = data;
 
-      const allCountrieLanguageMassive = data.map(el => el.languages)[0];
-
-      if (allSearchedCountiesMassive.length > 10) {
-        PNotify.error({
-          text: 'Too many matches found. Please enter a more specific query!',
-        });
+      if (allSearchedCountiesMassive.status === 404) {
+        console.log(allSearchedCountiesMassive.message);
         refs.country__list.innerHTML = '';
-      } else if (allSearchedCountiesMassive.length <= 1) {
-        refs.country__list.innerHTML = '';
-        const allSearchedCounties = buildInformationBlockItem(
-          allSearchedCountiesMassive,
-        );
-        insertListItems(allSearchedCounties);
-        const allcountrieLanguages = buildListItem(allCountrieLanguageMassive);
-        insertListLanguages(allcountrieLanguages);
       } else {
-        refs.country__list.innerHTML = '';
-        const allSearchedCounties = buildListItem(allSearchedCountiesMassive);
-        insertListItems(allSearchedCounties);
+        const allCountrieLanguageMassive = data.map(el => el.languages)[0];
+
+        if (allSearchedCountiesMassive.length > 10) {
+          PNotify.error({
+            text: 'Too many matches found. Please enter a more specific query!',
+          });
+          refs.country__list.innerHTML = '';
+        } else if (allSearchedCountiesMassive.length <= 1) {
+          refs.country__list.innerHTML = '';
+          const allSearchedCounties = buildInformationBlockItem(
+            allSearchedCountiesMassive,
+          );
+          insertListItems(allSearchedCounties);
+          const allcountrieLanguages = buildListItem(
+            allCountrieLanguageMassive,
+          );
+          insertListLanguages(allcountrieLanguages);
+        } else {
+          refs.country__list.innerHTML = '';
+          const allSearchedCounties = buildListItem(allSearchedCountiesMassive);
+          insertListItems(allSearchedCounties);
+        }
       }
     });
   }
