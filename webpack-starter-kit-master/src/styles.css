@@ -29,10 +29,17 @@ form {
 
 .country__input {
   width: 400px;
-  padding: 8px 8px;
+  padding: 8px;
   margin: 8px 0;
   box-sizing: border-box;
   font-size: 18px;
+  border: 1px solid gray;/* border: 2px; */
+  border-radius: 5px;
+}
+
+.country__input:focus {
+  border: 2px solid rgb(77, 189, 179);
+  outline: 0;
 }
 
 .inform__container {

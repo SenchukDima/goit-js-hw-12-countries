@@ -10,8 +10,11 @@ const refs = {
 };
 
 refs.country__input.addEventListener('input', _.debounce(onInput, 500));
+refs.country__form.addEventListener('submit', onInput);
 
 function onInput(event) {
+  event.preventDefault();
+  
   const searchQuery = event.target.value;
 
   countriesObj
